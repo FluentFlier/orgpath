@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Dashboard • Company Manager • OrgPath</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body class="dash-body">
+  <aside class="sidebar">
+    <div class="side-brand">
+      <img src="assets/orgpath-logo.png" alt="Orgpath" class="side-logo side-logo-full"/>
+      <div class="side-logo-small">CM</div>
+    </div>
+    <nav class="side-nav">
+      <a class="side-link active" href="company-dashboard.html"><span class="side-ico">▦</span><span class="side-label">Dashboard</span></a>
+      <a class="side-link" href="company-teams.html"><span class="side-ico">🏢</span><span class="side-label">Teams</span></a>
+      <a class="side-link" href="company-assessments.html"><span class="side-ico">📝</span><span class="side-label">Recent Assessments</span></a>
+      <a class="side-link" href="company-employees.html"><span class="side-ico">👥</span><span class="side-label">Employees</span></a>
+      <a class="side-link" href="company-analytics.html"><span class="side-ico">📊</span><span class="side-label">Analytics</span></a>
+      <a class="side-link" href="#"><span class="side-ico">⚙️</span><span class="side-label">Settings</span></a>
+    </nav>
+    <div class="side-footer">
+      <button id="btn-collapse" class="side-collapse" type="button"><span class="chev">‹</span><span class="side-label">Collapse</span></button>
+      <a class="side-logout" id="btn-logout"><span class="side-ico">⎋</span><span class="side-label">Logout</span></a>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <input type="search" class="search" placeholder="Search..." id="searchBox"/>
+      <div class="top-actions">
+        <button class="bell" aria-label="Notifications">🔔</button>
+        <div class="avatar">
+          <span class="avatar-circle" style="background:#1e88e5;">CM</span>
+          <div class="avatar-meta">
+            <div class="avatar-name">Company Manager</div>
+            <div class="avatar-role">Executive Level</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero" style="background:linear-gradient(90deg, #1e88e5, #26a69a);">
+      <div class="hero-dots"></div>
+      <div class="hero-inner">
+        <h2 class="hero-title">ORGANIZATIONAL EFFECTIVENESS</h2>
+      </div>
+    </section>
+
+    <section class="perf-intro">
+      <div class="tabs">
+        <button class="tab active">Overview</button>
+        <button class="tab">Team Effectiveness</button>
+        <button class="tab">Talent Management</button>
+      </div>
+    </section>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-head">
+          <h3>Completion Information</h3>
+        </div>
+        <div style="margin:16px 0;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px;">
+            <span style="color:#6c7d91;font-weight:600;">Total Completion</span>
+            <span style="font-size:48px;font-weight:800;color:#1b2a41;" id="valTotalCompletion">--</span>
+          </div>
+
+          <div style="margin:20px 0;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <span style="font-weight:600;">Male</span>
+              <span style="font-weight:700;" id="valMale">--%</span>
+            </div>
+            <div class="bar" style="height:16px;">
+              <div class="bar-fill" id="barMale" style="--p:0%;background:#1e88e5;"></div>
+            </div>
+          </div>
+
+          <div style="margin:20px 0;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <span style="font-weight:600;">Female</span>
+              <span style="font-weight:700;" id="valFemale">--%</span>
+            </div>
+            <div class="bar" style="height:16px;">
+              <div class="bar-fill" id="barFemale" style="--p:0%;background:#4caf50;"></div>
+            </div>
+          </div>
+
+          <div style="margin-top:24px;display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <span style="min-width:140px;font-weight:600;font-size:14px;">New Graduate</span>
+              <div style="flex:1;height:28px;background:#4caf50;border-radius:6px;display:flex;align-items:center;justify-content:flex-end;padding:0 12px;max-width:120px;">
+                <span style="color:#fff;font-weight:800;" id="valGrad">--</span>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;">
+              <span style="min-width:140px;font-weight:600;font-size:14px;">Junior Consultant</span>
+              <div style="flex:1;height:28px;background:#4caf50;border-radius:6px;display:flex;align-items:center;justify-content:flex-end;padding:0 12px;max-width:90px;">
+                <span style="color:#fff;font-weight:800;" id="valJun">--</span>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;">
+              <span style="min-width:140px;font-weight:600;font-size:14px;">Consultant</span>
+              <div style="flex:1;height:28px;background:#4caf50;border-radius:6px;display:flex;align-items:center;justify-content:flex-end;padding:0 12px;max-width:140px;">
+                <span style="color:#fff;font-weight:800;" id="valCons">--</span>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;">
+              <span style="min-width:140px;font-weight:600;font-size:14px;">Senior Consultant</span>
+              <div style="flex:1;height:28px;background:#26a69a;border-radius:6px;display:flex;align-items:center;justify-content:flex-end;padding:0 12px;max-width:180px;">
+                <span style="color:#fff;font-weight:800;" id="valSen">--</span>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;">
+              <span style="min-width:140px;font-weight:600;font-size:14px;">Manager</span>
+              <div style="flex:1;height:28px;background:#26a69a;border-radius:6px;display:flex;align-items:center;justify-content:flex-end;padding:0 12px;max-width:160px;">
+                <span style="color:#fff;font-weight:800;" id="valMgr">--</span>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;">
+              <span style="min-width:140px;font-weight:600;font-size:14px;">Executive</span>
+              <div style="flex:1;height:28px;background:#26a69a;border-radius:6px;display:flex;align-items:center;justify-content:flex-end;padding:0 12px;max-width:190px;">
+                <span style="color:#fff;font-weight:800;" id="valExec">--</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>Health Check</h3>
+        </div>
+        <div style="margin:16px 0;display:flex;flex-direction:column;gap:20px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-weight:600;">Organizational Health</span>
+            <div style="display:flex;gap:4px;align-items:center;">
+              <span style="color:#ffc107;font-size:20px;">★★★★</span><span style="color:#ddd;font-size:20px;">★</span>
+              <span style="font-weight:800;font-size:18px;color:#4caf50;margin-left:8px;" id="valOrgHealth">--%</span>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-weight:600;">Collaboration & Communication</span>
+            <div style="display:flex;gap:4px;align-items:center;">
+              <span style="color:#ffc107;font-size:20px;">★★★★</span><span style="color:#ddd;font-size:20px;">★</span>
+              <span style="font-weight:800;font-size:18px;color:#4caf50;margin-left:8px;" id="valCollab">--%</span>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-weight:600;">Adaptability</span>
+            <div style="display:flex;gap:4px;align-items:center;">
+              <span style="color:#ffc107;font-size:20px;">★★★</span><span style="color:#ddd;font-size:20px;">★★</span>
+              <span style="font-weight:800;font-size:18px;color:#ff9800;margin-left:8px;" id="valAdapt">--%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-head">
+          <h3>High Performance/High Potential</h3>
+        </div>
+        <div style="display:flex;justify-content:center;align-items:center;padding:20px;">
+          <div style="position:relative;width:200px;height:200px;">
+             <svg viewBox="0 0 200 200" style="transform:rotate(-90deg);">
+              <circle cx="100" cy="100" r="70" fill="none" stroke="#e0e0e0" stroke-width="30"></circle>
+              <circle cx="100" cy="100" r="70" fill="none" stroke="#1e88e5" stroke-width="30" stroke-dasharray="440" stroke-dashoffset="0"></circle>
+              <circle cx="100" cy="100" r="45" fill="none" stroke="#4caf50" stroke-width="30" stroke-dasharray="283" stroke-dashoffset="265"></circle>
+            </svg>
+            <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;">
+              <div style="font-size:12px;color:#666;">High Potential</div>
+              <div style="font-size:32px;font-weight:800;color:#333;margin:4px 0;" id="valHiPotPct">--%</div>
+              <div style="font-size:12px;color:#666;" id="valHiPotCnt">(--)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>Currently Capable vs Not Ready</h3>
+        </div>
+        <div style="margin:40px 0;">
+          <div style="display:flex;border-radius:999px;overflow:hidden;height:48px;">
+            <div id="barNotReady" style="width:46%;background:#1e88e5;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:18px;" id="valNotReady">--%</div>
+            <div id="barCapable" style="width:54%;background:#4caf50;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:18px;" id="valCapable">--%</div>
+          </div>
+          <div style="display:flex;justify-content:center;gap:32px;margin-top:20px;">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span style="width:16px;height:16px;background:#1e88e5;border-radius:4px;"></span>
+              <span style="font-weight:600;">NO</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span style="width:16px;height:16px;background:#4caf50;border-radius:4px;"></span>
+              <span style="font-weight:600;">YES</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-head">
+          <h3>Retention Rate</h3>
+        </div>
+        <div style="display:flex;gap:20px;align-items:center;margin:20px 0;">
+           <div style="font-size:48px;font-weight:800;color:#333;" id="valRetention">--%</div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="pad" style="height:40px"></footer>
+  </div>
+
+  <script src="js/company.js"></script>
+</body>
+</html>

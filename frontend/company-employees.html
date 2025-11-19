@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Employees • Company Manager • OrgPath</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body class="dash-body">
+  <aside class="sidebar">
+    <div class="side-brand">
+      <img src="assets/orgpath-logo.png" alt="Orgpath" class="side-logo side-logo-full"/>
+      <div class="side-logo-small">CM</div>
+    </div>
+    <nav class="side-nav">
+      <a class="side-link" href="company-dashboard.html"><span class="side-ico">▦</span><span class="side-label">Dashboard</span></a>
+      <a class="side-link" href="company-teams.html"><span class="side-ico">🏢</span><span class="side-label">Teams</span></a>
+      <a class="side-link" href="company-assessments.html"><span class="side-ico">📝</span><span class="side-label">Recent Assessments</span></a>
+      <a class="side-link active" href="company-employees.html"><span class="side-ico">👥</span><span class="side-label">Employees</span></a>
+      <a class="side-link" href="company-analytics.html"><span class="side-ico">📊</span><span class="side-label">Analytics</span></a>
+      <a class="side-link" href="#"><span class="side-ico">⚙️</span><span class="side-label">Settings</span></a>
+    </nav>
+    <div class="side-footer">
+      <button id="btn-collapse" class="side-collapse" type="button"><span class="chev">‹</span><span class="side-label">Collapse</span></button>
+      <a class="side-logout" id="btn-logout"><span class="side-ico">⎋</span><span class="side-label">Logout</span></a>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <input type="search" class="search" placeholder="Search..." id="searchBox"/>
+      <div class="top-actions">
+        <button class="bell">🔔</button>
+        <div class="avatar">
+          <span class="avatar-circle" style="background:#1e88e5;">CM</span>
+          <div class="avatar-meta">
+            <div class="avatar-name">Company Manager</div>
+            <div class="avatar-role">Executive Level</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero" style="background:linear-gradient(90deg, #1e88e5, #26a69a);">
+      <div class="hero-dots"></div>
+      <div class="hero-inner">
+        <h2 class="hero-title">ORGANIZATIONAL EFFECTIVENESS</h2>
+      </div>
+    </section>
+
+    <section class="members-head">
+      <div>
+        <h2 class="members-title">All Employees</h2>
+        <p class="muted">Manage and view all employees across the organization</p>
+      </div>
+      <button class="btn-outline-green" style="width:auto;padding:10px 20px;">
+        <span>👤</span> Add Employee
+      </button>
+    </section>
+
+    <section style="padding:20px 24px;">
+      <div class="card" style="margin:0;padding:20px; margin-bottom: 12px;">
+          <div style="display:grid;grid-template-columns:auto 1fr auto auto auto auto;gap:24px;align-items:center;">
+            <div class="avatar-circle" style="width:54px;height:54px;font-size:18px;background:#1976d2;">SJ</div>
+            <div>
+              <div style="font-weight:700;font-size:16px;">Sarah Johnson</div>
+              <div class="muted" style="font-size:14px;">sarah.j@orgpath.com</div>
+            </div>
+            <div>
+              <div style="font-size:12px;color:#6c7d91;">Role</div>
+              <div style="font-weight:600;">Senior Manager</div>
+            </div>
+            <div>
+              <div style="font-size:12px;color:#6c7d91;">Team</div>
+              <div style="font-weight:600; color:#1976d2;">Finance Operations</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;padding:6px 12px;background:#e8f5e9;border-radius:999px;">
+                <span style="width:8px;height:8px;background:#4caf50;border-radius:50%;"></span>
+                <span style="font-weight:700;font-size:14px;color:#2e7d32;">Active</span>
+            </div>
+            <button style="padding:8px 16px;border:2px solid #1e88e5;background:#fff;color:#1e88e5;border-radius:8px;font-weight:700;cursor:pointer;">View Details</button>
+          </div>
+      </div>
+    </section>
+    <footer class="pad" style="height:40px"></footer>
+  </div>
+  <script src="js/company.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Recent Assessments • Company Manager • OrgPath</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body class="dash-body">
+  <aside class="sidebar">
+    <div class="side-brand">
+      <img src="assets/orgpath-logo.png" alt="Orgpath" class="side-logo side-logo-full"/>
+      <div class="side-logo-small">CM</div>
+    </div>
+    <nav class="side-nav">
+      <a class="side-link" href="company-dashboard.html"><span class="side-ico">▦</span><span class="side-label">Dashboard</span></a>
+      <a class="side-link" href="company-teams.html"><span class="side-ico">🏢</span><span class="side-label">Teams</span></a>
+      <a class="side-link active" href="company-assessments.html"><span class="side-ico">📝</span><span class="side-label">Recent Assessments</span></a>
+      <a class="side-link" href="company-employees.html"><span class="side-ico">👥</span><span class="side-label">Employees</span></a>
+      <a class="side-link" href="company-analytics.html"><span class="side-ico">📊</span><span class="side-label">Analytics</span></a>
+      <a class="side-link" href="#"><span class="side-ico">⚙️</span><span class="side-label">Settings</span></a>
+    </nav>
+    <div class="side-footer">
+      <button id="btn-collapse" class="side-collapse" type="button"><span class="chev">‹</span><span class="side-label">Collapse</span></button>
+      <a class="side-logout" id="btn-logout"><span class="side-ico">⎋</span><span class="side-label">Logout</span></a>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <input type="search" class="search" placeholder="Search..." id="searchBox"/>
+      <div class="top-actions">
+        <button class="bell">🔔</button>
+        <div class="avatar">
+          <span class="avatar-circle" style="background:#1e88e5;">CM</span>
+          <div class="avatar-meta">
+            <div class="avatar-name">Company Manager</div>
+            <div class="avatar-role">Executive Level</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero" style="background:linear-gradient(90deg, #1e88e5, #26a69a);">
+      <div class="hero-dots"></div>
+      <div class="hero-inner">
+        <h2 class="hero-title">ORGANIZATIONAL EFFECTIVENESS</h2>
+      </div>
+    </section>
+
+    <section class="members-head">
+      <div>
+        <h2 class="members-title">Recent Assessments</h2>
+        <p class="muted">Track employee performance across all OrgPath assessments</p>
+      </div>
+    </section>
+
+    <div class="grid-2" style="grid-template-columns:repeat(3,1fr);padding:0 24px 20px;">
+      <div style="background:#fff; border:1px solid var(--stroke); border-radius:18px; padding:20px; text-align:center;">
+         <div style="font-size:28px; font-weight:800; color:#1565c0;">4</div>
+         <div style="font-size:14px; color:#6c7d91;">OrgInsights</div>
+      </div>
+      <div style="background:#fff; border:1px solid var(--stroke); border-radius:18px; padding:20px; text-align:center;">
+         <div style="font-size:28px; font-weight:800; color:#2e7d32;">4</div>
+         <div style="font-size:14px; color:#6c7d91;">360 Assessment</div>
+      </div>
+      <div style="background:#fff; border:1px solid var(--stroke); border-radius:18px; padding:20px; text-align:center;">
+         <div style="font-size:28px; font-weight:800; color:#00897b;">4</div>
+         <div style="font-size:14px; color:#6c7d91;">People Review</div>
+      </div>
+    </div>
+    <footer class="pad" style="height:40px"></footer>
+  </div>
+  <script src="js/company.js"></script>
+</body>
+</html>

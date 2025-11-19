@@ -120,7 +120,7 @@ body.side-collapsed .main{ margin-left:var(--side-narrow); }
 .avatar-name{ font-weight:600; }
 .avatar-role{ color:var(--muted); font-size:12px; }
 
-/* Dashboard Elements (KPIs) */
+/* Dashboard Elements */
 .hero{
   position:relative; overflow:hidden; margin:20px 24px 0; border-radius:16px;
   min-height:84px; display:flex; align-items:center;
@@ -146,7 +146,6 @@ body.side-collapsed .main{ margin-left:var(--side-narrow); }
 .kpi-sub{ margin-top:6px; color:var(--muted); display:flex; align-items:center; gap:6px; }
 .kpi-sub.green{ color:var(--green); }
 .kpi-ico{ opacity:.9; }
-
 
 /* =======================================================================
    TEAM LEAD - SPECIFIC PAGES (NEWLY ADDED)
@@ -239,6 +238,60 @@ body.side-collapsed .main{ margin-left:var(--side-narrow); }
 .pc-sub{ margin-top:4px; }
 .pc-big{ margin:12px 0 6px; font-size:40px; font-weight:900; color:#0f8f2f; line-height:1; }
 
+/* --- Buttons --- */
+.btn-outline-green{
+  margin-top:10px;
+  border:2px solid #0f8f2f; background:#fff; color:#0f8f2f; font-weight:700;
+  padding:10px 14px; border-radius:12px; cursor:pointer; width:100%;
+  display:flex; align-items:center; justify-content:center; gap:8px;
+}
+.btn-outline-green:hover{ background:#e8f6ec; }
+
+.grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:0 24px 24px; }
+.card{
+  background:var(--card); border:1px solid var(--stroke); border-radius:var(--radius);
+  margin:0 24px 18px; padding:14px 18px 18px;
+  box-shadow:0 1px 0 rgba(16,24,40,.02), 0 4px 14px rgba(16,24,40,.04);
+}
+.card-head h3{ margin:6px 0 2px; font-size:18px; }
+
+/* Bar breakdown in dashboard */
+.bar-row{ display:grid; grid-template-columns:160px 1fr 56px; align-items:center; gap:14px; padding:10px 0; }
+.bar-label{ font-weight:600; }
+.bar{ height:12px; background:#e9edf3; border-radius:999px; overflow:hidden; }
+.bar-fill{ height:100%; width:var(--p); background:var(--green-600); border-radius:999px; }
+
+/* Project cards */
+.proj{ padding:12px; border:1px solid #eef2f7; border-radius:14px; background:#f9fbfd; margin-bottom:12px; }
+.proj-top{ display:flex; justify-content:space-between; align-items:center; gap:10px; }
+.proj-name{ font-weight:700; }
+.proj-sub{ margin:4px 0 8px; }
+.pill{ font-size:12px; padding:6px 10px; border-radius:999px; font-weight:700; border:1px solid transparent; white-space:nowrap; }
+.pill--blue{ background:var(--blue-100); color:var(--blue-600); border-color:#d6e6ff; }
+.pill--green{ background:var(--green-100); color:var(--green-600); border-color:#cfeedd; }
+.pill--amber{ background:var(--amber-100); color:var(--amber-600); border-color:#ffe1b3; }
+.prog{ height:10px; background:#e9edf3; border-radius:999px; overflow:hidden; }
+.prog-fill{ height:100%; width:var(--p); background:var(--green-600); }
+
+/* Top Performers */
+.topper-list{ list-style:none; margin:0; padding:4px 0; }
+.topper{
+  display:grid; grid-template-columns:36px 40px 1fr auto; align-items:center;
+  gap:12px; padding:10px; border-radius:14px; background:#f9fbfd;
+  border:1px solid #eef2f7; margin-bottom:10px;
+}
+.topper-rank{ width:28px; height:28px; border-radius:999px; display:grid; place-items:center; background:#e8f2e9; color:var(--green); font-weight:800; }
+.chip.chip--avatar{ width:36px; height:36px; border-radius:999px; display:grid; place-items:center; background:#eaf3ff; color:#175ea6; font-weight:700; }
+.topper-name{ font-weight:700; }
+.topper-badge{ font-size:18px; }
+
+/* Responsive */
+@media (max-width: 1100px){
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .grid-2{grid-template-columns:1fr}
+  .search{max-width:45vw}
+}
+
 /* =======================================================================
    LEGACY LOGIN STYLES (Kept for compatibility)
    ======================================================================= */
@@ -253,6 +306,13 @@ body.side-collapsed .main{ margin-left:var(--side-narrow); }
 }
 .page-title{ margin:0; font-size:48px; font-weight:800; }
 .content{ margin-top:32px; }
+.tabs{
+  width:min(680px, 100%); margin:0 auto 32px; display:flex; padding:6px; border-radius:999px; background:var(--tab-track);
+}
+.tab{
+  flex:1; border:0; padding:14px 20px; cursor:pointer; border-radius:999px; font-weight:700; color:#3a4c67; background:transparent;
+}
+.tab.active{ background:#fff; box-shadow:0 2px 10px rgba(17,41,82,.12); }
 .welcome{ margin:0 0 8px; text-align:center; font-size:32px; font-weight:800; line-height:1.2; }
 .sub{ margin:0 0 26px; text-align:center; color:var(--muted); font-size:18px; line-height:1.5; }
 .form{ width:min(700px, 94%); margin:0 auto; display:flex; flex-direction:column; gap:28px; }
