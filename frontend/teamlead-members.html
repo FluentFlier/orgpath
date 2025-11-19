@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Team Members • OrgPath</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body class="dash-body">
+  <aside class="sidebar">
+    <div class="side-brand">
+      <img src="assets/orgpath-logo.png" alt="Orgpath" class="side-logo side-logo-full"/>
+      <div class="side-logo-small">O</div>
+    </div>
+
+    <nav class="side-nav">
+      <a class="side-link" href="teamlead-dashboard.html">
+        <span class="side-ico" aria-hidden="true">▦</span><span class="side-label">Dashboard</span>
+      </a>
+      <a class="side-link active" href="teamlead-members.html">
+        <span class="side-ico" aria-hidden="true">👥</span><span class="side-label">Team Members</span>
+      </a>
+      <a class="side-link" href="teamlead-assessments.html">
+        <span class="side-ico" aria-hidden="true">📝</span><span class="side-label">Assessments</span>
+      </a>
+      <a class="side-link" href="teamlead-performance.html">
+        <span class="side-ico" aria-hidden="true">📊</span><span class="side-label">Performance</span>
+      </a>
+      <a class="side-link" href="#">
+        <span class="side-ico" aria-hidden="true">⚙️</span><span class="side-label">Settings</span>
+      </a>
+    </nav>
+
+    <div class="side-footer">
+      <button id="btn-collapse" class="side-collapse" type="button">
+        <span class="chev">‹</span><span class="side-label">Collapse</span>
+      </button>
+      <a class="side-logout" id="btn-logout"><span class="side-ico" aria-hidden="true">⎋</span><span class="side-label">Logout</span></a>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <input type="search" class="search" placeholder="Search team members…" id="searchBox"/>
+      <div class="top-actions">
+        <button class="bell" aria-label="Notifications">🔔</button>
+        <div class="avatar">
+          <span class="avatar-circle" id="avatarInitials">LD</span>
+          <div class="avatar-meta">
+            <div class="avatar-name" id="leadName">Loading...</div>
+            <div class="avatar-role">Team Lead</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero hero--green">
+      <div class="hero-dots"></div>
+      <div class="hero-inner">
+        <h2 class="hero-title">MARKETING &amp; GROWTH TEAM</h2>
+        <div class="hero-sub">Marketing Department</div>
+      </div>
+    </section>
+
+    <section class="members-head">
+      <div>
+        <h2 class="members-title">Team Members</h2>
+        <p class="muted">Manage your team of <span id="memberCount">15</span> members</p>
+      </div>
+    </section>
+
+    <section class="members-grid">
+      <article class="member-card">
+        <div class="member-top">
+          <span class="avatar-dot">AT</span>
+          <div>
+            <div class="member-name">Alex Turner</div>
+            <div class="member-role muted">Content Strategist</div>
+          </div>
+        </div>
+        <ul class="member-contact">
+          <li><span>alex.t@orgpath.com</span></li>
+          <li><span>+1 (555) 234-5679</span></li>
+        </ul>
+        <div class="perf-row">
+          <span class="label">Performance</span><span class="value">85%</span>
+        </div>
+        <div class="perf-bar"><div class="perf-fill" style="--p:85%"></div></div>
+      </article>
+
+      <article class="member-card">
+        <div class="member-top">
+          <span class="avatar-dot">SM</span>
+          <div>
+            <div class="member-name">Sophie Martin</div>
+            <div class="member-role muted">Social Media Manager</div>
+          </div>
+        </div>
+        <ul class="member-contact">
+          <li><span>sophie.m@orgpath.com</span></li>
+          <li><span>+1 (555) 234-5680</span></li>
+        </ul>
+        <div class="perf-row"><span class="label">Performance</span><span class="value">92%</span></div>
+        <div class="perf-bar"><div class="perf-fill" style="--p:92%"></div></div>
+      </article>
+
+      <article class="member-card">
+        <div class="member-top">
+          <span class="avatar-dot">EW</span>
+          <div>
+            <div class="member-name">Emma Wilson</div>
+            <div class="member-role muted">SEO Specialist</div>
+          </div>
+        </div>
+        <ul class="member-contact">
+          <li><span>emma.w@orgpath.com</span></li>
+          <li><span>+1 (555) 234-5681</span></li>
+        </ul>
+        <div class="perf-row"><span class="label">Performance</span><span class="value">88%</span></div>
+        <div class="perf-bar"><div class="perf-fill" style="--p:88%"></div></div>
+      </article>
+    </section>
+
+    <footer class="pad" style="height: 40px;"></footer>
+  </div>
+  <script src="js/teamlead.js"></script>
+</body>
+</html>

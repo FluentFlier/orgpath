@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Team Lead • OrgPath</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body class="dash-body">
+  <aside class="sidebar">
+    <div class="side-brand">
+        <img src="assets/orgpath-logo.png" alt="Orgpath" class="side-logo side-logo-full"/>
+        <div class="side-logo-small" aria-hidden="true">O</div>
+    </div>
+      
+    <nav class="side-nav">
+        <a class="side-link active" href="teamlead-dashboard.html">
+            <span class="side-ico" aria-hidden="true">▦</span><span class="side-label">Dashboard</span>
+        </a>
+        <a class="side-link" href="teamlead-members.html" id="nav-members">
+            <span class="side-ico" aria-hidden="true">👥</span><span class="side-label">Team Members</span>
+        </a>
+        <a class="side-link" href="teamlead-assessments.html" id="nav-assess">
+            <span class="side-ico" aria-hidden="true">📝</span><span class="side-label">Assessments</span>
+        </a>
+        <a class="side-link" href="teamlead-performance.html" id="nav-perf">
+            <span class="side-ico" aria-hidden="true">📊</span><span class="side-label">Performance</span>
+        </a>
+        
+        <a class="side-link" href="#" id="nav-settings">
+            <span class="side-ico" aria-hidden="true">⚙️</span><span class="side-label">Settings</span>
+        </a>
+    </nav>
+  
+    <div class="side-footer">
+      <button id="btn-collapse" class="side-collapse" type="button">
+        <span class="chev">‹</span>
+        <span class="side-label">Collapse</span>
+      </button>
+      <a class="side-logout" id="btn-logout">
+        <span class="side-ico" aria-hidden="true">⎋</span>
+        <span class="side-label">Logout</span>
+      </a>
+    </div>
+  </aside>
+  
+  <div class="main">
+    <header class="topbar">
+      <input type="search" class="search" placeholder="Search team members…" id="searchBox"/>
+      <div class="top-actions">
+        <button class="bell" aria-label="Notifications">🔔</button>
+        <div class="avatar">
+          <span class="avatar-circle" id="avatarInitials">LD</span>
+          <div class="avatar-meta">
+            <div class="avatar-name" id="leadName">Loading...</div>
+            <div class="avatar-role">Team Lead</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero hero--green">
+      <div class="hero-dots"></div>
+      <div class="hero-inner">
+        <h2 class="hero-title">MARKETING &amp; GROWTH TEAM</h2>
+        <div class="hero-sub">Marketing Department</div>
+      </div>
+    </section>
+
+    <section class="kpis">
+      <div class="kpi-card">
+        <div class="kpi-label">Team Size</div>
+        <div class="kpi-big" id="kpiTeamSize">--</div>
+        <div class="kpi-sub"><span class="kpi-ico">👥</span> Active Members</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Team Health Score</div>
+        <div class="kpi-big kpi-green" id="kpiHealth">--%</div>
+        <div class="kpi-sub green"><span class="kpi-ico">📈</span> Excellent Performance</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Avg Overall Score</div>
+        <div class="kpi-big" id="kpiAvg">--%</div>
+        <div class="kpi-sub"><span class="kpi-ico">📌</span> Team Average</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Assessment Completion</div>
+        <div class="kpi-big kpi-green" id="kpiCompletion">--%</div>
+        <div class="kpi-sub green"><span class="kpi-ico">✅</span> All Complete</div>
+      </div>
+    </section>
+
+    <footer class="pad" style="height: 40px;"></footer>
+  </div>
+
+  <script src="js/teamlead.js"></script>
+</body>
+</html>
