@@ -1,3 +1,33 @@
+// Handle Google SSO Response
+window.handleCredentialResponse = async (response) => {
+  console.log("Google JWT:", response.credential);
+  const API_BASE = "http://localhost:8080/api";
+
+  try {
+    // Send the Google token to our backend
+    const res = await fetch(`${API_BASE}/auth/google`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ token: response.credential }),
+    });
+
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || "Google login failed");
+
+    // Success! Save token and redirect
+    sessionStorage.setItem("orgpath_token", data.token);
+    sessionStorage.setItem("orgpath_user", JSON.stringify(data.user));
+
+    // Redirect based on role
+    if (data.user.role === 'lead') window.location.href = 'teamlead-dashboard.html';
+    else if (data.user.role === 'company') window.location.href = 'company-dashboard.html';
+    else window.location.href = 'employee-dashboard.html';
+
+  } catch (err) {
+    alert(`SSO Error: ${err.message}`);
+  }
+};
+
 // ========== LOGIN / REGISTER PAGE ==========
 document.addEventListener('DOMContentLoaded', () => {
   const API_BASE = "http://localhost:8080/api";
@@ -150,6 +180,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
-
-// (We can remove the old employee dashboard logic, 
-// as that's now in js/dashboard.js and js/teamlead.js etc.)

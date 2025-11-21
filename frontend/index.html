@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Login • OrgPath</title>
   <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
   <div class="container brand-row">
@@ -40,6 +41,23 @@
           <a class="forgot" href="#">Forgot password?</a>
         </div>
         <button type="submit" class="btn">Login</button>
+
+        <div style="margin-top: 16px; display: flex; justify-content: center;">
+          <div id="g_id_onload"
+               data-client_id="879626589202-okhopnpcriflfva4c98jin199cb6280e.apps.googleusercontent.com"
+               data-callback="handleCredentialResponse"
+               data-auto_prompt="false">
+          </div>
+          <div class="g_id_signin"
+               data-type="standard"
+               data-size="large"
+               data-theme="outline"
+               data-text="sign_in_with"
+               data-shape="rectangular"
+               data-logo_alignment="left">
+          </div>
+        </div>
+
         <p class="terms">
           By continuing, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
         </p>
@@ -116,7 +134,7 @@
               <label for="fake-captcha" class="rc-label">I'm not a robot</label>
             </div>
             <div class="rc-right">
-              <img src="assets/recaptcha-logo.png" alt="reCAPTCHA logo" class="rc-logo" />
+              <img src="assets/recaptcha-logo.png" alt="reCAPTCHA logo" class="rc-logo" style="width: 70px;" />
               <div class="rc-meta">
                 <span class="brand">reCAPTCHA</span><br />
                 <span>Privacy - <a href="#" onclick="return false">Terms</a></span>

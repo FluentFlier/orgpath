@@ -3,11 +3,15 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { Pool } from "pg";
 import { config } from "../config.js";
+import { OAuth2Client } from 'google-auth-library'; // New Import
 
 const router = express.Router();
 const pool = new Pool({ connectionString: config.dbUrl });
 
-// Function to determine role from referral code
+// --- GOOGLE SSO CONFIG ---
+const GOOGLE_CLIENT_ID = "879626589202-okhopnpcriflfva4c98jin199cb6280e.apps.googleusercontent.com";
+const client = new OAuth2Client(GOOGLE_CLIENT_ID);
+
 function roleFromReferral(code) {
   if (!code) return "employee";
   const c = String(code).trim().charAt(0).toUpperCase();
@@ -17,7 +21,6 @@ function roleFromReferral(code) {
   return "employee";
 }
 
-// Function to sign a new JWT token
 function signToken(user) {
   return jwt.sign(
     {
@@ -33,22 +36,66 @@ function signToken(user) {
   );
 }
 
-// --- REAL REGISTER ENDPOINT ---
+// --- NEW GOOGLE ROUTE ---
+router.post("/google", async (req, res) => {
+  try {
+    const { token } = req.body;
+    
+    // 1. Verify the Google Token
+    const ticket = await client.verifyIdToken({
+        idToken: token,
+        audience: GOOGLE_CLIENT_ID,
+    });
+    const payload = ticket.getPayload();
+    const { email, given_name, family_name } = payload;
+
+    // 2. Check if user exists in our DB
+    let userQuery = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
+    let user = userQuery.rows[0];
+
+    // 3. If not, create them automatically (Default to 'employee')
+    if (!user) {
+      // We set a placeholder password and referral code
+      const newUser = await pool.query(
+        `INSERT INTO users (first_name, last_name, username, email, password_hash, referral_code, role)
+         VALUES ($1, $2, $3, $4, 'google-sso-user', 'A-SSO', 'employee')
+         RETURNING *`,
+        [given_name, family_name, email, email]
+      );
+      user = newUser.rows[0];
+    }
+
+    // 4. Sign our own JWT
+    const jwtToken = signToken(user);
+    const safeUser = {
+      id: user.id,
+      first_name: user.first_name,
+      last_name: user.last_name,
+      email: user.email,
+      role: user.role,
+    };
+
+    res.json({ token: jwtToken, user: safeUser });
+
+  } catch (e) {
+    console.error("Google SSO Error:", e);
+    res.status(401).json({ error: "Invalid Google Token" });
+  }
+});
+
+// --- EXISTING ROUTES ---
+
 router.post("/register", async (req, res) => {
   try {
     const { firstName, lastName, email, password, referralCode } = req.body;
-    
-    // 1. Validate input
     if (!firstName || !email || !password || !referralCode) {
       return res.status(400).json({ error: "Missing required fields" });
     }
 
-    // 2. Determine role and hash password
     const role = roleFromReferral(referralCode);
     const hash = await bcrypt.hash(password, 12);
-    const username = email.toLowerCase(); // Use email as username
+    const username = email.toLowerCase();
 
-    // 3. Insert user into database
     const result = await pool.query(
       `INSERT INTO users (first_name, last_name, username, email, password_hash, referral_code, role)
        VALUES ($1, $2, $3, $4, $5, $6, $7)
@@ -56,11 +103,9 @@ router.post("/register", async (req, res) => {
       [firstName, lastName, username, email, hash, referralCode, role]
     );
 
-    // 4. Sign and return token
     const user = result.rows[0];
     const token = signToken(user);
     res.status(201).json({ token, user });
-
   } catch (e) {
     if (String(e.message).includes("duplicate key")) {
       return res.status(409).json({ error: "User already exists" });
@@ -70,14 +115,12 @@ router.post("/register", async (req, res) => {
   }
 });
 
-// --- REAL LOGIN ENDPOINT ---
 router.post("/login", async (req, res) => {
   try {
-    const { identifier, password } = req.body; // 'identifier' can be email or username
+    const { identifier, password } = req.body;
     if (!identifier || !password)
       return res.status(400).json({ error: "Missing credentials" });
 
-    // 1. Find user by email or username
     const userQuery = await pool.query(
       "SELECT * FROM users WHERE email=$1 OR username=$1 LIMIT 1",
       [identifier.toLowerCase()]
@@ -85,13 +128,11 @@ router.post("/login", async (req, res) => {
     const user = userQuery.rows[0];
     if (!user) return res.status(401).json({ error: "Invalid credentials" });
 
-    // 2. Check password
     const valid = await bcrypt.compare(password, user.password_hash);
     if (!valid) return res.status(401).json({ error: "Invalid credentials" });
 
-    // 3. Sign and return token
     const token = signToken(user);
-    const safeUser = { // Don't send password hash back
+    const safeUser = {
       id: user.id,
       first_name: user.first_name,
       last_name: user.last_name,
@@ -100,14 +141,12 @@ router.post("/login", async (req, res) => {
       role: user.role,
     };
     res.json({ token, user: safeUser });
-
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Server error" });
   }
 });
 
-// --- GET /ME ENDPOINT ---
 router.get("/me", (req, res) => {
   const auth = req.headers.authorization || "";
   const token = auth.startsWith("Bearer ") ? auth.slice(7) : null;
